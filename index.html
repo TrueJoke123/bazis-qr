@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BazisQR</title>
+<meta name="theme-color" content="#1f2a37">
+<link rel="stylesheet" href="css/app.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="./">Bazis<b>QR</b></a>
+  <div class="title" id="title"></div>
+  <nav class="tabs" id="tabs" hidden>
+    <button data-tab="3d" class="on">3D</button>
+    <button data-tab="parts">Детали</button>
+    <button data-tab="spec">Спецификация</button>
+    <button data-tab="check">Чек-лист</button>
+    <button data-tab="labels">Бирки</button>
+  </nav>
+</header>
+
+<main id="app">
+  <section id="home" class="page" hidden></section>
+
+  <section id="tab-3d" class="page view3d" hidden>
+    <div id="canvas"></div>
+    <div class="tools">
+      <select id="blockSel" title="Блок"></select>
+      <button id="bAll" title="Показать все детали">Все</button>
+      <button id="bHoles" class="tg" title="Показать отверстия">Присадка</button>
+      <button id="bFurn" class="tg on" title="Показать фурнитуру">Фурнитура</button>
+      <label class="expl" title="Разнести детали">Разнести <input id="explode" type="range" min="0" max="100" value="0"></label>
+      <span class="views">
+        <button data-view="front">Спереди</button><button data-view="side">Сбоку</button><button data-view="top">Сверху</button><button data-view="iso">3D</button>
+      </span>
+    </div>
+    <div id="card" class="card" hidden></div>
+  </section>
+
+  <section id="tab-parts" class="page" hidden>
+    <div class="bar">
+      <input id="pSearch" type="search" placeholder="Поиск: номер, название, материал">
+      <select id="pBlock"></select>
+    </div>
+    <div id="pList" class="plist"></div>
+  </section>
+
+  <section id="tab-spec" class="page doc" hidden></section>
+  <section id="tab-check" class="page doc" hidden></section>
+  <section id="tab-labels" class="page doc" hidden></section>
+</main>
+
+<div id="modal" class="modal" hidden>
+  <div class="mbox">
+    <div class="mhead"><b id="mTitle"></b><span class="sp"></span><span id="mTools"></span><button id="mClose" title="Закрыть">✕</button></div>
+    <div id="mBody" class="mbody"></div>
+  </div>
+</div>
+
+<div id="toast" class="toast" hidden></div>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
